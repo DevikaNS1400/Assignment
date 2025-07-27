@@ -1,0 +1,20 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+module cmos_d2_tb;
+reg A,B;
+wire Y;
+cmos_rpsn_2 u1(.Y(Y),.A(A),.B(B));
+initial begin
+$dumpfile("cmos_d2_tb.vcd");
+$dumpvars(1);
+end
+initial
+begin
+A=0;B=0;#10;
+A=0;B=1;#10;
+A=1;B=0;#10;
+A=1;B=1;#10;
+$finish;
+end
+endmodule
