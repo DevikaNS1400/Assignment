@@ -1,0 +1,20 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module FA_gtlvl_1(
+output S,
+output c_out,
+input A,
+input B,
+input C
+);
+wire w1,w2,w3;
+xor g1(w1,A,B);
+xor g2(S,w1,C);
+and g3(w2,A,B);
+and g4(w3,B,C);
+and g5(w4,C,A);
+or g6(c_out,w2,w3,w4);
+endmodule
