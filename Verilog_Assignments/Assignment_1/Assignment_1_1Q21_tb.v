@@ -1,0 +1,17 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+module udp_dlatch_tb;
+reg clk,d,rst;
+wire q;
+
+udp_d_latch u1(.q(q),.clk(clk),.d(d),.rst(rst));
+
+initial begin
+clk=0;rst=1;d=1;#10;
+clk=0;rst=0;d=0;#10;
+clk=1;rst=0;d=0;#10;
+clk=1;rst=0;d=1;#10;
+$finish;
+end
+endmodule
