@@ -1,0 +1,19 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+module NAND_array(
+output [3:0]nand_ar,
+input [3:0]a,b
+ );
+genvar i;
+for(i=0;i<5;i=i+1)
+begin
+nand_mod u1(nand_ar[i],a[i],b[i]);
+end
+
+endmodule
+
+module nand_mod(output z,
+input x,y);
+ assign z=~(x&y);
+endmodule
