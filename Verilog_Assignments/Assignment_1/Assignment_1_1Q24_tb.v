@@ -6,7 +6,10 @@ reg [3:0]a,b;
 wire [3:0]nand_ar;
 
 NAND_array u1(.nand_ar(nand_ar),.a(a),.b(b));
-
+initial begin
+  $dumpfile("Assignment_1_1Q24_tb.vcd");
+  $dumpvars(1);
+end
 initial begin
 a=4'b0110;b=4'b0101;#10;
 a=4'b1110;b=4'b1001;#10;
