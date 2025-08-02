@@ -1,0 +1,17 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+module mod_gatedelay_tb;
+reg a;
+wire y;
+mod_not u1(.y(y),.a(a));
+initial begin
+$display("Time=%d;a=%d,y=%b",$time,a,y);
+$monitor("Time=%d;a=%d,y=%b",$time,a,y);
+a=0;#10;
+a=1;#10;
+a=0;#10;
+a=1;#10;
+$finish;
+end
+endmodule

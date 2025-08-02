@@ -1,0 +1,16 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+module bufer_delay_tb;
+reg a;
+wire y;
+buffer_delay u1(.y(y),.a(a));
+initial begin
+$monitor("Time = %d | in = %b | out = %b", $time, a, y);
+a=0;#10;
+a=1;#10;
+a=0;#10;
+a=1;#10;
+$finish;
+end
+endmodule
