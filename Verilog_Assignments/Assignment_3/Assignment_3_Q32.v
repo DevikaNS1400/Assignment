@@ -1,0 +1,17 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+module mod_shift_lt(
+output reg [7:0]shift_lt
+    );
+reg [7:0]in;
+initial begin
+shift_lt=8'b00000000;
+in=8'b00000100;
+while(in[7]==0)begin
+$monitor("Time=%d,in=%b",$time,in);
+in=in<<1;#10;
+end
+shift_lt=in;
+end
+endmodule
