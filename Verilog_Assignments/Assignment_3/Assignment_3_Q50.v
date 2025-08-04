@@ -12,9 +12,9 @@ casex(s)
 3'b001:y=I1;
 3'b01x:y=I2;
 3'b011:y=I3;
-3'b1x0:y=I4;
-3'b1x1:y=I5;
-3'b110:y=I6;
+3'b1x0:y=I4;// both the cases 100 & 110 will get selected and will not give the exact output for 110 as it is not considered
+3'b1x1:y=I5; //both the cases 100 & 101 will get selected and will not give the exact output for 111 as it is not considered
+3'b110:y=I6; 
 3'b111:y=I7;
 default:y=1'bx;
 endcase
