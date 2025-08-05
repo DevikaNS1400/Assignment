@@ -1,0 +1,15 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+module mod_tf_sum(
+output reg [7:0] sum,
+input [7:0]a,b );
+//sum=sumfunc(a,b);
+function [7:0]sumfunc(input [7:0]a,b);
+//reg [7:0]s;
+sumfunc=a+b;
+endfunction
+always @(*) begin
+sum=sumfunc(a,b);
+$display("Sum=%d",sum);end
+endmodule
