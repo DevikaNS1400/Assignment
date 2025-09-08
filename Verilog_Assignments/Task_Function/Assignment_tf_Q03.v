@@ -1,24 +1,18 @@
 `timescale 1ns / 1ps
+////////////////////////////////////////////////////////////////////////////////// 
 //////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////
-
-module mod_sum_task(
-output reg [3:0]y
- );
-reg [2:0]a,b;
-
-task task_sum;
-input[2:0]a,b;
-output [3:0]y;
+module mod_sum(
+output reg [3:0]sum,
+input [2:0]a,b
+    );
+task task_sum(input [2:0]a,input[2:0]b,output[3:0]sum);
 begin
-y=a+b;
+sum=a+b;
 end
 endtask
-
-initial begin
-a=6;b=7;
-task_sum(a,b,y);
-$display("Sum of %d and %d is %d",a,b,y);#10;
-$finish;
+always @(*) begin
+task_sum(a,b,sum);
+$display("Sum of a=%d b=%d id sum=%d",a,b,sum);
 end
+
 endmodule
