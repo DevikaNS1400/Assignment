@@ -29,5 +29,8 @@ initial begin
 a=0;b=1;#8;
 a=1;b=1;#7;
 #5$stop;
+a=1;b=0;#10;
+a=0;b=0;#10;
+$finish;
 end
 endmodule
