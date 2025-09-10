@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 08.09.2025 15:25:30
+// Create Date: 08.09.2025 22:50:51
 // Design Name: 
-// Module Name: mod_fa_tb
+// Module Name: mod_4_bit_adder_tb
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,29 +20,26 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module mod_fa_tb();
-reg A,B,C;
-wire S,c_out;
-mod_fa u1(.S(S),.c_out(c_out),.A(A),.B(B),.C(C));
-initial 
+module mod_4_bit_adder_tb();
+wire [3:0]sum;
+wire c_out;
+reg [3:0]a,b;
+reg cin;
+
+mod_4_bit_adder u1(.sum(sum),.cin(cin),.a(a),.b(b),.c_out(c_out));
+task inputs;
+input [3:0]a_in,b_in;
+input cin1;
 begin
-$monitor($time,"A=%b,B=%b,C=%b,S=%b,c_out=%b",A,B,C,S,c_out);
-$display($time,"A=%b,B=%b,C=%b,S=%b,c_out=%b",A,B,C,S,c_out);
-A=0;B=0;C=0;#10;
-$display($time,"A=%b,B=%b,C=%b,S=%b,c_out=%b",A,B,C,S,c_out);
-A=0;B=0;C=1;#10;
-$display($time,"A=%b,B=%b,C=%b,S=%b,c_out=%b",A,B,C,S,c_out);
-A=0;B=1;C=0;#10;
-$display($time,"A=%b,B=%b,C=%b,S=%b,c_out=%b",A,B,C,S,c_out);
-A=0;B=1;C=1;#10;
-$display($time,"A=%b,B=%b,C=%b,S=%b,c_out=%b",A,B,C,S,c_out);
-A=1;B=0;C=0;#10;
-$display($time,"A=%b,B=%b,C=%b,S=%b,c_out=%b",A,B,C,S,c_out);
-A=1;B=0;C=1;#10;
-$display($time,"A=%b,B=%b,C=%b,S=%b,c_out=%b",A,B,C,S,c_out);
-A=1;B=1;C=0;#10;
-$display($time,"A=%b,B=%b,C=%b,S=%b,c_out=%b",A,B,C,S,c_out);
-A=1;B=1;C=1;#10;
-$finish;
+a=a_in;
+b=b_in;
+cin=cin1;
+end
+endtask
+initial begin
+inputs(4'b0100,4'b0110,1'b0);#10;
+inputs(4'b0101,4'b1110,1'b0);#10;
+inputs(4'b1001,4'b0111,1'b0);#10;
+inputs(4'b0010,4'b1000,1'b0);#10;
 end
 endmodule
